@@ -1,0 +1,294 @@
+
+    <section class="content-header">
+      <h1>
+        GKS - CTAZ ZONE
+        <small>BANGALORE ELECTRICITY SUPPLY COMPANY LIMITED</small>
+        <h6>Progress & pending Application details of Gangakalyana as on Jan-18</h6>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Charts</a></li>
+        <li class="active">dcm</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- East Circle Graph -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Tumkur
+                <small>Circle</small>
+              </h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="form-group">
+                <label>Circle Name</label>
+                <select class="selectpicker test" id="chartType" data-size="5">
+                   <option value="Tumkur1">Tumkur</option>
+                   <option value="Tumkur2">Tiptur</option>
+                   <option value="Tumkur3">Madhugiri</option>
+                   <option value="Tumkur4">Total</option>           
+              </select>
+            </div>
+            <div class="chart">
+
+              <!--  select bar chart -->
+              
+
+              <div id="js-legend" class="chart-legend" align="center"></div>
+              <canvas id="barChart1" style="height:450px"></canvas>
+
+              <!--   <canvas id="areaChart" style="height:250px"></canvas> -->
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+          <!-- /.box -->
+<div class="col-md-12">
+          <!-- North Circle  Graph -->
+          <div class="box box-danger">
+           <div class="box-header with-border">
+             <h3 class="box-title">Davanagere</h3>
+                  <small>Circle</small>
+             <div class="box-tools pull-right">
+               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+               </button>
+               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+             </div>
+           </div>
+           <div class="box-body">
+            <div class="form-group">
+              <label>Circle Name</label>
+              <select class="selectpicker test" id="chartType2" data-size="5">
+               <option value="Davanagere1">Davanagere</option>
+                 <option value="Davanagere2">Harihara</option>
+                 <option value="Davanagere3">Chandapura</option>
+                 <option value="Davanagere4">Hiriyur</option>
+                 <option value="Davanagere5">Total</option>           
+            </select>
+              </div>
+            <div class="chart">
+            <div id="js-legend2" class="chart-legend" align="center"></div>
+            <canvas id="barChart2" style="height:450px"></canvas>
+             </div>
+           </div>
+           <!-- /.box-body -->
+         </div>
+          <!-- /.box -->
+
+        </div>
+      
+        <!-- /.col (RIGHT) -->
+      </div>
+      <!-- /.row -->
+
+    </section>
+ 
+<script>
+  $(function () {
+
+    var manlabels = ["Closing balance of applications", "applications received",  "Total applications lapsed"," applications Serviced","Pending applications","Work Completed but service not availed","Formalities not observed","Pending at Corporation end","Work under Progress","Work to be taken up","Work Order to be issued","Estimate to be prepared","Pending at BESCOM end","Total Installations serviced during the year"];
+
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- East CHART -
+    //--------------
+   var ctx = document.getElementById("barChart1").getContext("2d");
+
+    /*data*/
+
+
+
+var tumkurData =[];
+tumkurData[0] = [207, 18,  1, 74,  150, 10,  22,  32,  68,  35,  1, 14,  118, 220];
+tumkurData[1] = [80,  21,  2, 40,  59,  0, 20,  20,  39,  0, 0, 0, 39,  230];
+tumkurData[2] = [231, 46,  0, 69,  208, 0, 35,  35,  93,  57,  0, 23,  173, 545];
+tumkurData[3] = [518, 85,  3, 183, 417, 10,  77,  87,  200, 92,  1, 37,  330, 995];
+
+
+
+var tumkur_Select = [];
+tumkur_Select[0] = 'Tumkur';
+tumkur_Select[1] = 'Tiptur';
+tumkur_Select[2] = 'Madhugiri';
+tumkur_Select[3] = 'Total';
+
+
+     
+var dataMap = {};
+for(row=0;row<tumkurData.length;row++){
+  var obj={};
+  obj['method']='Bar';
+  
+  var rowdata = {};
+  rowdata['label'] = tumkur_Select[row];     //selected Lable will come here
+  rowdata['fillColor'] = '#46BFBD';
+  rowdata['data'] = tumkurData[row];
+
+
+  var mainData={};
+  mainData['labels']=manlabels;
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+  obj['data']=mainData;
+
+  var newIndex='Tumkur'+(row+1);
+  dataMap[newIndex]=obj;
+}
+
+
+
+
+   
+var currentChart;
+
+ function updateChart() {
+     if(currentChart){currentChart.destroy();}
+   
+     var determineChart = $("#chartType").val();
+
+     var params = dataMap[determineChart]
+      currentChart = new Chart(ctx)[params.method](params.data, {});
+      var legend=currentChart;
+          document.getElementById("js-legend").innerHTML = legend.generateLegend();
+
+ }
+
+
+ $('#chartType').on('click', updateChart)
+ updateChart();
+
+
+
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- AREA CHART -
+    //--------------
+   var ctx2 = document.getElementById("barChart2").getContext("2d");
+
+    /*data*/
+
+var davanagereData =[];
+davanagereData[0] = [160, 28,  0, 52,  187, 0, 0, 0, 4, 177, 0, 6, 187, 448];
+davanagereData[1] = [371, 1, 0, 25,  136, 5, 0, 5, 59,  72,  0, 0, 131, 241];
+davanagereData[2] = [223, 36,  0, 42,  217, 0, 5, 5, 195, 11,  0, 6, 212, 1069];
+davanagereData[3] = [389, 94,  0, 78,  405, 0, 0, 0, 81,  237, 8, 79,  405, 785];
+davanagereData[4] = [612, 159, 0, 197, 945, 5, 5, 10,  339, 497, 8, 91,  935, 2543];
+
+var davanagere_Select = [];
+davanagere_Select[0] = 'Davanagere';
+davanagere_Select[1] = 'Harihara';
+davanagere_Select[2] = 'Chitradurga';
+davanagere_Select[3] = 'Hiriyur';
+davanagere_Select[4] = 'Total';
+
+
+
+     
+var dataMap2 = {};
+for(row=0;row<davanagereData.length;row++){
+  var obj={};
+  obj['method']='Bar';
+  
+  var rowdata = {};
+  rowdata['label'] = davanagere_Select[row];     //selected Lable will come here
+  rowdata['fillColor'] = '#46BFBD';
+  rowdata['data'] = davanagereData[row];
+
+
+  var mainData={};
+  mainData['labels']=manlabels;
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+  obj['data']=mainData;
+
+  var newIndex='Davanagere'+(row+1);
+  dataMap2[newIndex]=obj;
+}
+
+
+
+
+
+
+
+
+var currentChart2;
+
+ function updateChart2() {
+     if(currentChart2){currentChart2.destroy();}
+   
+     var determineChart2 = $("#chartType2").val();
+
+     var params2 = dataMap2[determineChart2]
+     currentChart2 = new Chart(ctx2)[params2.method](params2.data, {});
+     document.getElementById("js-legend2").innerHTML = currentChart2.generateLegend();
+ }
+
+ $('#chartType2').on('change', updateChart2)
+ updateChart2();
+
+  })
+
+</script>
+
+
+
+
+</body>
+</html>
+<style type="text/css">
+  #js-legend ul {
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#js-legend ul li {
+  display: inline;
+  padding-left: 30px;
+  position: relative;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  padding: 2px 8px 2px 28px;
+  font-size: 14px;
+  cursor: default;
+  -webkit-transition: background-color 200ms ease-in-out;
+  -moz-transition: background-color 200ms ease-in-out;
+  -o-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+#js-legend li span {
+display: inline;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+</style>

@@ -1,0 +1,402 @@
+
+  <section class="content-header">
+      <h1>
+        Water Work - CTAZ ZONE
+        <small>BANGALORE ELECTRICITY SUPPLY COMPANY LIMITED</small>
+        <h6>Pendency and progress of energisation of Drinking Water Supply</h6>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Charts</a></li>
+        <li class="active">Water Work</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- East Circle Graph -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Tumkur
+                <small>Circle</small>
+              </h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="form-group">
+                <label>Circle Name</label>
+                <select class="selectpicker test" id="chartType" data-size="5">
+                   <option value="Tumkur1">Tumkur</option>
+                   <option value="Tumkur2">Tiptur</option>
+                   <option value="Tumkur3">Madhugiri</option>
+                   <option value="Tumkur4">Total</option>           
+              </select>
+            </div>
+            <div class="chart">
+
+              <!--  select bar chart -->
+              
+
+              <div id="js-legend" class="chart-legend" align="center"></div>
+              <canvas id="barChart1" style="height:450px"></canvas>
+
+              <!--   <canvas id="areaChart" style="height:250px"></canvas> -->
+            </div>
+          </div>
+          <!-- /.box-body -->
+        </div>
+      </div>
+          <!-- /.box -->
+<div class="col-md-12">
+          <!-- North Circle  Graph -->
+          <div class="box box-danger">
+           <div class="box-header with-border">
+             <h3 class="box-title">Davanagere</h3>
+                  <small>Circle</small>
+             <div class="box-tools pull-right">
+               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+               </button>
+               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+             </div>
+           </div>
+           <div class="box-body">
+            <div class="form-group">
+              <label>Circle Name</label>
+              <select class="selectpicker test" id="chartType2" data-size="5">
+               <option value="Davanagere1">Davanagere</option>
+                 <option value="Davanagere2">Harihara</option>
+                 <option value="Davanagere3">Chandapura</option>
+                 <option value="Davanagere4">Hiriyur</option>
+                 <option value="Davanagere5">Total</option>           
+            </select>
+              </div>
+            <div class="chart">
+            <div id="js-legend2" class="chart-legend" align="center"></div>
+            <canvas id="barChart2" style="height:450px"></canvas>
+             </div>
+           </div>
+           <!-- /.box-body -->
+         </div>
+          <!-- /.box -->
+
+        </div>
+
+        <div class="col-md-12">
+          <!-- AREA CHART -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">BRAZ ZONE Total
+              </h3>
+
+              <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+            <div class="box-body">
+              <div class="chart">
+              <div id="js-legend5" class="chart-legend"></div>
+               <canvas id="barChart5" style="height:650px"></canvas>
+                  
+            <!--   <canvas id="areaChart" style="height:250px"></canvas> -->
+              </div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          
+        </div>
+      
+        <!-- /.col (RIGHT) -->
+      </div>
+      <!-- /.row -->
+
+    </section>
+ 
+<script>
+  $(function () {
+
+    var manlabels = [
+    "No. of Applications pending as at the end of previous month", 
+    "No of Applications registered during the month",
+    "Total Applications.","No of Applications lapsed during the month",
+    "No. of Applications serviced during the month",
+    "No. of Applications pending as at the end of the month",
+    "Applications pending with Local Bodies",
+    "Applications pending with BESCOM end"  ,
+    "Total applications serviced during 17-18",
+    "Works completed from BESCOM end, but sevice not avalied"  ,
+    "Formalilities not observed",
+    "Total applications pending from local bodies as at the end of the month" ,
+    "Work Order issued",  
+    "Work Under progress",  
+    "Work to be taken up",
+    "Work order to be issued", 
+    "Total applications pending from BESCOM end as at the end of the month" ,
+    "Total applications serviced during 17-18"
+];
+
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- East CHART -
+    //--------------
+   var ctx = document.getElementById("barChart1").getContext("2d");
+
+    /*data*/
+
+
+
+var tumkurData =[];
+tumkurData[0] = [6, 1, 7, 1, 2, 4, 0, 0, 0, 0, 4, 0, 0, 4, 117];
+tumkurData[1] = [5, 5, 10,  0, 2, 8, 0, 0, 0, 0, 8, 0, 0, 8, 95];
+tumkurData[2] = [12,  4, 16,  0, 4, 12,  0, 0, 0, 0, 12,  0, 0, 12,  250];
+tumkurData[3] = [23,  10,  33,  1, 8, 24,  0, 0, 0, 0, 24,  0, 0, 24,  462];
+
+
+var tumkur_Select = [];
+tumkur_Select[0] = 'Tumkur';
+tumkur_Select[1] = 'Tiptur';
+tumkur_Select[2] = 'Madhugiri';
+tumkur_Select[3] = 'Total';
+
+
+     
+var dataMap = {};
+for(row=0;row<tumkurData.length;row++){
+  var obj={};
+  obj['method']='Bar';
+  
+  var rowdata = {};
+  rowdata['label'] = tumkur_Select[row];     //selected Lable will come here
+  rowdata['fillColor'] = '#46BFBD';
+  rowdata['data'] = tumkurData[row];
+
+
+  var mainData={};
+  mainData['labels']=manlabels;
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+  obj['data']=mainData;
+
+  var newIndex='Tumkur'+(row+1);
+  dataMap[newIndex]=obj;
+}
+
+
+
+
+   
+var currentChart;
+
+ function updateChart() {
+     if(currentChart){currentChart.destroy();}
+   
+     var determineChart = $("#chartType").val();
+
+     var params = dataMap[determineChart]
+      currentChart = new Chart(ctx)[params.method](params.data, {});
+      var legend=currentChart;
+          document.getElementById("js-legend").innerHTML = legend.generateLegend();
+
+ }
+
+
+ $('#chartType').on('click', updateChart)
+ updateChart();
+
+
+
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- AREA CHART -
+    //--------------
+   var ctx2 = document.getElementById("barChart2").getContext("2d");
+
+    /*data*/
+
+var davanagereData =[];
+davanagereData[0] = [11,  3, 14,  0, 1, 13,  0, 0, 0, 0, 0, 9, 4, 13,  120];
+davanagereData[1] = [31,  0, 31,  0, 2, 29,  0, 0, 0, 0, 0, 29,  0, 29,  161];
+davanagereData[2] = [5, 0, 5, 1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75];
+davanagereData[3] = [10,  22,  32,  1, 2, 29,  0, 0, 0, 0, 5, 24,  0, 29,  242];
+davanagereData[4] = [57,  25,  82,  2, 9, 71,  0, 0, 0, 0, 5, 62,  4, 71,  598];
+
+
+var davanagere_Select = [];
+davanagere_Select[0] = 'Davanagere';
+davanagere_Select[1] = 'Harihara';
+davanagere_Select[2] = 'Chitradurga';
+davanagere_Select[3] = 'Hiriyur';
+davanagere_Select[4] = 'Total';
+
+
+
+     
+var dataMap2 = {};
+for(row=0;row<davanagereData.length;row++){
+  var obj={};
+  obj['method']='Bar';
+  
+  var rowdata = {};
+  rowdata['label'] = davanagere_Select[row];     //selected Lable will come here
+  rowdata['fillColor'] = '#46BFBD';
+  rowdata['data'] = davanagereData[row];
+
+
+  var mainData={};
+  mainData['labels']=manlabels;
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+  obj['data']=mainData;
+
+  var newIndex='Davanagere'+(row+1);
+  dataMap2[newIndex]=obj;
+}
+
+
+
+var currentChart2;
+
+ function updateChart2() {
+     if(currentChart2){currentChart2.destroy();}
+   
+     var determineChart2 = $("#chartType2").val();
+
+     var params2 = dataMap2[determineChart2]
+     currentChart2 = new Chart(ctx2)[params2.method](params2.data, {});
+     document.getElementById("js-legend2").innerHTML = currentChart2.generateLegend();
+ }
+
+ $('#chartType2').on('change', updateChart2)
+ updateChart2();
+
+ 
+
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- AREA CHART -
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    var areaChartCanvas = $('#barChart5').get(0).getContext('2d')
+    // This will get the first returned node in the jQuery collection.
+    var barChart       = new Chart(areaChartCanvas)
+
+    /*data*/
+  
+    var total=[80,  35,  115, 3, 17,  95,  0, 0, 0, 0, 29,  62,  4, 95,  1060];
+
+
+
+    var areaChartData = {
+      labels  : manlabels,
+      datasets: [
+        {
+          label               : 'BRAZ ZONE Total',
+          fillColor           : 'rgba(210, 214, 222, 1)',
+          strokeColor         : 'rgba(210, 214, 222, 1)',
+          pointColor          : 'rgba(210, 214, 222, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+          data                : total
+        }
+            
+      ]
+    }
+
+    var barChartOptions     = {
+  scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+
+    }
+    barChartOptions.datasetFill = false
+    var legend=barChart.Bar(areaChartData, barChartOptions)
+     document.getElementById("js-legend5").innerHTML = legend.generateLegend();
+
+
+  })
+
+</script>
+
+
+</body>
+</html>
+<style type="text/css">
+  #js-legend ul {
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#js-legend ul li {
+  display: inline;
+  padding-left: 30px;
+  position: relative;
+  margin-bottom: 4px;
+  border-radius: 5px;
+  padding: 2px 8px 2px 28px;
+  font-size: 14px;
+  cursor: default;
+  -webkit-transition: background-color 200ms ease-in-out;
+  -moz-transition: background-color 200ms ease-in-out;
+  -o-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+}
+
+#js-legend li span {
+display: inline;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  border-radius: 5px;
+}
+
+</style>

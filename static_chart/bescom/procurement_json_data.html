@@ -1,0 +1,418 @@
+<script>
+  $(function () {
+
+
+
+
+var mainlabel = [
+     "BESCOM",
+     "Indiranagar",
+     "Vidhanasoudha",
+     "Malleshwaram",
+     "Jayanagar",
+     "Hebbal",
+     "Y Hanka",
+     "N Mangala",
+     "R Nagara",
+     "KK Pura",
+     "CD Pura",
+     "Kolar",
+     "KGF",
+     "Chintamani",
+     "C.B. Pura",
+     "Tumkur",
+     "M Giri",
+     "Tiptur",
+     "D Gere",
+     "Harihara",
+     "C Durga",
+     "Hiriyur",
+              ];
+
+
+
+
+var colors = [];
+  colors[0]= '#00e6ac';
+  colors[1]= '#66cc00';
+  colors[2]= '#e6e600';
+  colors[3]= '#8e5ea2';
+  colors[4]= '#3cba9f';
+  colors[5]= '#e8c3b9';
+  colors[6]= '#c45850';
+  colors[7]= '#80bfff';
+  colors[8]= '#bf4040';
+  colors[9]= '#8a8a5c';
+  colors[10]= '#4d79ff';
+  colors [11] = '#ff4d4d';
+colors [12] = '#336980';
+colors[13] ='#0d0d0d';
+colors[14] ='#114499';
+colors[15] ='#33ff33';
+colors[16] ='#ff3399';
+
+var legend_label=["D.Trs 25 KVA ","D.Trs 63 KVA","D.Trs 100 KVA","D.Trs 250 KVA","D.Trs 500 KVA"];
+
+
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    //- 111111111111BAR CHART -Transformers
+    //--------------
+
+    // Get context with jQuery - using jQuery's .get() method.
+    var areaChartCanvas = $('#barChart1').get(0).getContext('2d')
+    // This will get the first returned node in the jQuery collection.
+    var barChart       = new Chart(areaChartCanvas);
+
+var charObj = [];
+charObj[0] = [ 587,0  ,0  ,0  ,0  ,3  ,50 ,0  ,38 ,19 ,54 ,36 ,0  ,7  ,38 ,0  ,160,0, 70  ,61 ,1  ,181]
+charObj[1] = [ 98 ,0  ,0  ,0  ,0  ,0  ,14 ,0  ,78 ,27 ,24 ,25 ,10 ,31 ,18 ,19 ,0  ,0, 60  ,69 ,9  ,3  ]
+charObj[2] = [ 3  ,0  ,0  ,3  ,0  ,13 ,0  ,1  ,9  ,29 ,26 ,29 ,31 ,28 ,53 ,5  ,0  ,2, 60  ,35 ,36 ,17 ]
+charObj[3] = [ 6  ,6  ,0  ,1  ,13 ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0, 00  ,00 ,00 ,00 ]
+charObj[4] = [ 0  ,0  ,0  ,1  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0, 00  ,00 ,00 ,00 ]
+
+
+  var dataMap = {};
+  
+
+ var areaChartData1 = {
+      labels  : mainlabel
+    }
+    areaChartData1['datasets'] = [];
+
+for(row=0;row<charObj.length;row++){
+  var obj={};
+  obj['labels']= mainlabel;
+
+  var rowdata = {};
+  rowdata['label'] = legend_label[row];
+  rowdata['fillColor'] = colors[row];
+  rowdata['data'] = charObj[row];
+
+
+  var mainData={};
+  mainData['labels']=mainlabel[row];
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+obj['datasets']= [];
+
+obj['datasets'].push(rowdata);
+ areaChartData1['datasets'].push(rowdata);
+
+  dataMap[row]=obj;
+}
+console.log(dataMap);
+
+   // console.log(areaChartData);
+    console.log(areaChartData1);
+
+    areaChartData = areaChartData1;
+    
+
+    var barChartOptions     = {
+    
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+     
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+   var legend=barChart.Bar(areaChartData, barChartOptions)
+     document.getElementById("js-legend").innerHTML = legend.generateLegend();
+
+
+/*3rd baar chart******************************************************************************************/
+ //-------------
+    //- bar CHART -2 for testing purpose
+    //--------------
+  var charObj = [];
+charObj[0] = [901.24,  36.05, 0.00,  41.36, 58.95, 199.80,  450.00,  368.65,  162.59,  378.11, 338.50,  529.20,  384.92, 375.75,  408.00,  382.52,  354.20,  493.727, 535.00,  446.68,  479.99,  557.81]
+charObj[1] = [69.36, 0.97,  0.00,  2.11,  1.84,  1.60,  0.00,  0 ,7.83,  0.00,  5.17,  0.00,  0.00,  0.00,  0.00,  0.00,  0.00,  0, 0.00,  0 ,0, 0]
+
+var legend_label2 = ["Rabbit ACSR Conductor","Coyote ACSR Conductor"];
+
+  var dataMap = {};
+  
+
+ var areaChartData2 = {
+      labels  : mainlabel
+    }
+    areaChartData2['datasets'] = [];
+
+for(row=0;row<charObj.length;row++){
+  var obj={};
+  obj['labels']= mainlabel;
+  
+  var rowdata = {};
+  rowdata['label'] = legend_label2[row];
+  rowdata['fillColor'] = colors[row];
+  rowdata['data'] = charObj[row];
+
+
+  var mainData={};
+  mainData['labels']=mainlabel[row];
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+obj['datasets']= [];
+
+obj['datasets'].push(rowdata);
+ areaChartData2['datasets'].push(rowdata);
+
+  dataMap[row]=obj;
+}
+console.log(dataMap);
+
+
+  var barChartCanvas                   = $('#barChart2').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+    var barChartData                     = areaChartData2
+   
+    var barChartOptions                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+    barChartOptions.datasetFill = false
+   /* */
+  var legend=barChart.Bar(barChartData, barChartOptions)
+     document.getElementById("js-legend2").innerHTML = legend.generateLegend();
+
+
+
+/*3rd baar chart******************************************************************************************/
+ //-------------
+    //- bar CHART -3 for testing purpose
+    //--------------
+
+  var charObj = [];
+charObj[0] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20,  179, 58,  25,  1667,  48,  0, 10,  0, 0, 233, 191];
+charObj[1] = [0, 0, 0, 0, 0, 0, 0, 174, 0, 26,  45,  475, 65,  76,  196, 674, 55,  88,  0, 31,  472, 184];
+charObj[2] = [23,  0, 0, 0, 0, 0, 0, 252, 0, 171, 0, 624, 206, 831, 960, 333, 0, 756, 340, 22,  10,  220];
+charObj[3] = [0, 928, 0, 377, 86,  202, 0, 164, 0, 0, 0, 35,  16,  86,  390, 105, 0, 350, 0, 0, 0, 2];
+charObj[4] = [383, 0, 0, 0, 8, 395, 0, 307, 0, 7, 0, 30,  0, 246, 531, 0, 36,  1, 0, 43,  600, 20];
+charObj[5] = [63,  67,  0, 40,  0, 40,  35,  0, 0, 19,  1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+var legend_label3= ["PCC Pole 8 Mtr",
+"PSC Poles 8 Mtr",
+"RCC Pole 8 Mtr",
+"PSC Poles 9 Mtr",
+"RCC Pole 9 Mtr",
+"Spun Pole"];
+
+
+var dataMap = {};
+  
+
+ var areaChartData3 = {
+      labels  : mainlabel
+    }
+    areaChartData3['datasets'] = [];
+
+for(row=0;row<charObj.length;row++){
+  var obj={};
+  obj['labels']= mainlabel;
+  
+  var rowdata = {};
+  rowdata['label'] = legend_label3[row];
+  rowdata['fillColor'] = colors[row];
+  rowdata['data'] = charObj[row];
+
+
+  var mainData={};
+  mainData['labels']=mainlabel[row];
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+obj['datasets']= [];
+
+obj['datasets'].push(rowdata);
+ areaChartData3['datasets'].push(rowdata);
+
+  dataMap[row]=obj;
+}
+console.log(dataMap);
+
+
+
+
+  var barChartCanvas                   = $('#barChart3').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+    var barChartData                     = areaChartData3
+    
+    var barChartOptions                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+    barChartOptions.datasetFill = false
+   /* */
+  var legend=barChart.Bar(barChartData, barChartOptions)
+     document.getElementById("js-legend3").innerHTML = legend.generateLegend();
+
+
+     /*4th baar chart******************************************************************************************/
+ //-------------
+    //- bar CHART -4 for testing purpose
+    //--------------
+
+    var charObj = [];
+charObj[0] = [29677, 4568 , 1108 , 1189 , 1301 , 0 ,560 ,0 ,1244 , 3086 , 1030,  0 ,0, 0 ,73 , 0 ,0 ,0 ,0 ,0 ,0 ,0];
+charObj[1] = [4053,  2041,  1166,  260, 12913, 308, 105, 0, 0, 786, 255, 307, 0, 0, 1569,  523, 25,  363, 0, 0, 1128,  35];
+charObj[2] = [0, 0, 0, 311, 34,  47,  336, 0, 222, 637, 181, 306, 54,  38,  0, 47,  0, 0, 0, 0, 0, 0];
+charObj[3] = [22956, 439, 2362,  7431,  551, 1053,  1069,  0, 0, 25642, 120, 0, 0, 0, 0, 487, 265, 0, 0, 0, 6022,  829];
+
+var legend_label4=["XLPE armoured HT UG Al Cable 3x95 Sq.mm",
+"XLPE armoured HT UG Al Cable 3x240 Sq.mm",
+"XLPE armoured HT UG Al Cable 3x400 Sq.mm",
+"LT AB Cable 3x95+1x70+1x16 Sq.mm"];
+var dataMap = {};
+  
+
+ var areaChartData4 = {
+      labels  : mainlabel
+    }
+    areaChartData4['datasets'] = [];
+
+for(row=0;row<charObj.length;row++){
+  var obj={};
+  obj['labels']= mainlabel;
+  
+  var rowdata = {};
+  rowdata['label'] = legend_label4[row];
+  rowdata['fillColor'] = colors[row];
+  rowdata['data'] = charObj[row];
+
+
+  var mainData={};
+  mainData['labels']=mainlabel[row];
+  mainData['datasets'] = [];
+ mainData['datasets'].push(rowdata);
+
+
+obj['datasets']= [];
+
+obj['datasets'].push(rowdata);
+ areaChartData4['datasets'].push(rowdata);
+
+  dataMap[row]=obj;
+}
+console.log(dataMap);
+
+
+
+  var barChartCanvas                   = $('#barChart4').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+   var barChartData                     = areaChartData4
+   
+    var barChartOptions                  = {
+      //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+      scaleBeginAtZero        : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : true,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - If there is a stroke on each bar
+      barShowStroke           : true,
+      //Number - Pixel width of the bar stroke
+      barStrokeWidth          : 2,
+      //Number - Spacing between each of the X value sets
+      barValueSpacing         : 5,
+      //Number - Spacing between data sets within X values
+      barDatasetSpacing       : 1,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to make the chart responsive
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+    barChartOptions.datasetFill = false
+   /* */
+  var legend=barChart.Bar(barChartData, barChartOptions)
+     document.getElementById("js-legend4").innerHTML = legend.generateLegend();
+  })
+
+
+</script>
