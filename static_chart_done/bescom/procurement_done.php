@@ -7,23 +7,23 @@
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <!-- Bootstrap 3.3.7 -->
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
 <!-- Font Awesome -->
-<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
 <!-- Ionicons -->
-<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+<link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
 <!-- Theme style -->
-<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+<link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
 <!-- AdminLTE Skins. Choose a skin from the css/skins
 folder instead of downloading all of them to reduce the load. -->
-<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+<link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
- <?php include 'header.php';?>
-  <?php include 'nav.php';?>
+ <?php include './../../header.php';?>
+  <?php include './../../nav.php';?>
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -128,17 +128,17 @@ href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,30
 </div>
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- ChartJS -->
-<script src="bower_components/chart.js/Chart.js"></script>
+<script src="../../bower_components/chart.js/Chart.js"></script>
 <!-- FastClick -->
-<script src="bower_components/fastclick/lib/fastclick.js"></script>
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="../../dist/js/demo.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- page script -->
 
@@ -246,8 +246,8 @@ for(row=0;row<charObj.length;row++){
 	
 		
 }
-/*<!------------------------------- COnductor -------------------------------->
-*/for(row=0;row<charObj2.length;row++){
+<!------------------------------- COnductor -------------------------------->
+for(row=0;row<charObj2.length;row++){
 	 var arrayconduct = [];  var arrayconduct2 = [];  var arrayconduct3 = []; 
 	for(row1=0;row1<=6;row1++){
   var conduct = {};
@@ -280,7 +280,7 @@ for(row=0;row<charObj.length;row++){
 	outsideconductarray3.push(conduct3);
 }
 
-/*<!------------------------------- Poles -------------------------------->*/
+<!------------------------------- Poles -------------------------------->
 for(row=0;row<charObj3.length;row++){
 	 var arraypoles = [];  var arraypoles2 = [];  var arraypoles3 = []; 
 	for(row1=0;row1<=6;row1++){
@@ -315,7 +315,7 @@ for(row=0;row<charObj3.length;row++){
 }
 
 
-/*<!------------------------------- Cable -------------------------------->*/
+<!------------------------------- Cable -------------------------------->
 for(row=0;row<charObj4.length;row++){
 	 var arraycable = [];  var arraycable2 = [];  var arraycable3 = []; 
 	for(row1=0;row1<=6;row1++){

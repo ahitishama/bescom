@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -54,7 +54,7 @@
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-
+      
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="../../dist/img/avatar3.png" class="user-image" alt="User Image">
@@ -132,7 +132,8 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-     <li class="active treeview menu-open">
+      
+            <li class="active treeview menu-open">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -160,7 +161,7 @@
            
            <li><a href="powersupply.html"><i class="fa fa-circle-o"></i>Power supply position</a></li>
            <li><a href="powerpurchase.html"><i class="fa fa-circle-o"></i>Power Purchase</a></li>
-            
+              <li><a href="dcm.html"><i class="fa fa-circle-o"></i>DCM</a></li>
 
         <!--     <li class="active"><a href="chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
         <li><a href="morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
@@ -186,9 +187,6 @@
         </li>
 
         <!-- /M & C - EA  -->  
-        
-   
-       
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -199,13 +197,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-          POWER PURCHASE
-        <small>SOURCE WISE POWER PURCHASED & AMOUNT BILLED DURING OCTOBER  17</small>
+          DCM
+        <small>Monthly progress report of DSM section -Jan-2018</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Charts</a></li>
-        <li class="active">power purchase</li>
+        <li class="active">dcm</li>
       </ol>
     </section>
 
@@ -216,6 +214,9 @@
           <!-- AREA CHART -->
           <div class="box box-primary">
             <div class="box-header with-border">
+              <h3 class="box-title">Demand Side Management
+                  <small>Section</small>
+              </h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -224,8 +225,22 @@
               </div>
             </div>
             <div class="box-body">
+            <div class="form-group">
+                <label>Monthly Report  </label>
+                <select  id="chartType"><!-- class="form-control"  -->
+                  <option value="pie1"> SRTPV Progress</option>
+                  <option value="pie2">LED Bulb sales status</option>
+                  <option value="pie3">LED tube light sales status</option>
+                  <option value="pie4">Energy Efficient Fan sales status</option>
+                  <option value="pie5">Surya Raitha pilot project</option>
+                </select>
+              </div>
               <div class="chart">
-              <div id="js-legend" class="chart-legend" align="center"></div>
+              
+              <!--  select bar chart -->
+              
+                            
+<div id="js-legend" class="chart-legend" align="center"></div>
                <canvas id="barChart1" style="height:430px"></canvas>
                   
             <!--   <canvas id="areaChart" style="height:250px"></canvas> -->
@@ -234,11 +249,11 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-        </div>
-  <div class="col-md-12">
+
           <!-- DONUT CHART -->
-          <div class="box box-danger">
+         <!--  <div class="box box-danger">
            <div class="box-header with-border">
+             <h3 class="box-title">Poles</h3>
          
              <div class="box-tools pull-right">
                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -248,20 +263,20 @@
            </div>
            <div class="box-body">
             <div class="chart">
-                            <div id="js-legend2" class="chart-legend" align="center"></div>
-
-              <canvas id="barChart2" style="height:430px"></canvas></div>
+            <canvas id="pieChart" style="height:250px"></canvas>
+              <canvas id="barChartt" style="height:230px"></canvas></div>
            </div>
-<!--            /.box-body
- -->         </div>
+           /.box-body
+         </div> -->
           <!-- /.box -->
 
         </div>
         <!-- /.col (LEFT) -->
-        <div class="col-md-12">
+       <!--  <div class="col-md-6">
          LINE CHART
          <div class="box box-info">
            <div class="box-header with-border">
+             <h3 class="box-title">Conductor</h3>
        
              <div class="box-tools pull-right">
                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -271,16 +286,35 @@
            </div>
            <div class="box-body">
              <div class="chart">
-                            <div id="js-legend3" class="chart-legend" align="center"></div>
-
-             <canvas id="barChart3" style="height:430px"></canvas>
+             <canvas id="barChart2" style="height:230px"></canvas>
+               <canvas id="lineChart" style="height:250px"></canvas>
              </div>
            </div>
-          <!--  /.box-body -->
+           /.box-body
          </div>
- 
+         /.box
        
-       </div>
+         BAR CHART
+         <div class="box box-success">
+           <div class="box-header with-border">
+             <h3 class="box-title">Cable</h3>
+       
+             <div class="box-tools pull-right">
+               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+               </button>
+               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+             </div>
+           </div>
+           <div class="box-body">
+             <div class="chart">
+               <canvas id="barChart" style="height:230px"></canvas>
+             </div>
+           </div>
+           /.box-body
+         </div>
+         /.box
+       
+       </div> -->
         <!-- /.col (RIGHT) -->
       </div>
       <!-- /.row -->
@@ -297,6 +331,198 @@
     reserved.
   </footer>
 
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-user bg-yellow"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
+
+                <p>New phone +1(800)555-1234</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
+
+                <p>nora@example.com</p>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <i class="menu-icon fa fa-file-code-o bg-green"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
+
+                <p>Execution time 5 seconds</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Update Resume
+                <span class="label label-success pull-right">95%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Laravel Integration
+                <span class="label label-warning pull-right">50%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)">
+              <h4 class="control-sidebar-subheading">
+                Back End Framework
+                <span class="label label-primary pull-right">68%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Stats tab content -->
+      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+        <form method="post">
+          <h3 class="control-sidebar-heading">General Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Report panel usage
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Some information about this general settings option
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Allow mail redirect
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Other sets of options are available
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Expose author name in posts
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+
+            <p>
+              Allow the user to show his name in blog posts
+            </p>
+          </div>
+          <!-- /.form-group -->
+
+          <h3 class="control-sidebar-heading">Chat Settings</h3>
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Show me as online
+              <input type="checkbox" class="pull-right" checked>
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Turn off notifications
+              <input type="checkbox" class="pull-right">
+            </label>
+          </div>
+          <!-- /.form-group -->
+
+          <div class="form-group">
+            <label class="control-sidebar-subheading">
+              Delete chat history
+              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
+            </label>
+          </div>
+          <!-- /.form-group -->
+        </form>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
@@ -324,64 +550,48 @@
     //--------------
     //- AREA CHART -
     //--------------
+   var ctx = document.getElementById("barChart1").getContext("2d");
 
-    // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas = $('#barChart1').get(0).getContext('2d')
-    // This will get the first returned node in the jQuery collection.
-    var barChart       = new Chart(areaChartCanvas)
 
- 
 
-var consInKwh=[754932482,
--1511473,
-19616657,
-6087619,
-150942141,
-563775556,
-302725,
-283200,
-87028724,
-358440712,
-13625572,
-3876397,
-93203990,
-82694756
-]
+ var dataMap = {
+     'pie1':  {
+          method: 'Bar',
+         data: {
+             //labels: ['24:4:0', '07'],
+             datasets: [{
+                 label: "SRTPV Progress nos ",
+                fillColor: "#46BFBD",
+                 strokeColor: "#46BFBD",
+                 highlightFill: "#46BFBD",
+                 highlightStroke: "#46BFBD",
+                 data: [{"x":"2012-01-02T00:00:00+00:00","y":80}, {"x":"2012-03-13T00:00:00+00:00","y":150}, ]
+             }],
+         }
+     },
 
-    var areaChartData = {
-      labels  : ["CGS",
-"UI CHARGES",
-"NTPCL-VVNL coal",
-"NTPCL-VVNL solar",
-"KPCL-HYDEL",
-"KPCL-THERMAL",
-"KPCL-WIND",
-"KPCL-Solar",
- "Solar",
-"UPCL",
-"Co-Generation",
-"Bio-Mass",
-"Mini-Hydel",
-"Wind"
-],
+     
+ }; 
 
-      datasets: [
-        {
-          label               : 'CONS IN KWH',
-          fillColor           : '#80bfff',
-          strokeColor         : '#80bfff',
-          pointColor          : '#80bfff',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : consInKwh
-        }
+  
+   var barChartOptions     = {
+   
+ showTooltips: true,
+    onAnimationComplete: function () {
 
-      ]
-    }
+        var ctx = this.chart.ctx;
+        ctx.font = this.scale.font;
+        ctx.fillStyle = this.scale.textColor
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
 
-    var barChartOptions     = {
-
+        this.datasets.forEach(function (dataset) {
+            dataset.bars.forEach(function (bar) {
+                ctx.fillText(bar.value, bar.x, bar.y - 5);
+            });
+        })
+    },
+    
 
            scaleBeginAtZero        : true,
       //Boolean - Whether grid lines are shown across the chart
@@ -409,200 +619,25 @@ var consInKwh=[754932482,
       maintainAspectRatio     : true
 
     }
-    barChartOptions.datasetFill = false
-    var legend=barChart.Bar(areaChartData, barChartOptions)
-     document.getElementById("js-legend").innerHTML = legend.generateLegend();
-
-/*2nd chart*/
 
 
 
+   
+var currentChart;
 
+ function updateChart() {
+     if(currentChart){currentChart.destroy();}
+   
+     var determineChart = $("#chartType").val();
 
+     var params = dataMap[determineChart]
+      currentChart = new Chart(ctx)[params.method](params.data, {});
+      var legend=currentChart;
+          document.getElementById("js-legend").innerHTML = legend.generateLegend();
 
-
-
-  // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas2 = $('#barChart2').get(0).getContext('2d')
-    // This will get the first returned node in the jQuery collection.
-    var barChart2       = new Chart(areaChartCanvas2)
-
-var amountBilledRs=[754932482,
--1511473,
-19616657,
-6087619,
-150942141,
-563775556,
-302725,
-283200,
-87028724,
-358440712,
-13625572,
-3876397,
-93203990,
-82694756
-]
-
-    var areaChartData = {
-      labels  : ["CGS",
-"UI CHARGES",
-"NTPCL-VVNL coal",
-"NTPCL-VVNL solar",
-"KPCL-HYDEL",
-"KPCL-THERMAL",
-"KPCL-WIND",
-"KPCL-Solar",
- "Solar",
-"UPCL",
-"Co-Generation",
-"Bio-Mass",
-"Mini-Hydel",
-"Wind"
-],
-
-      datasets: [
-        {
-          label               : 'AMOUNT BILLED RS',
-          fillColor           : '#336980',
-          strokeColor         : '#336980',
-          pointColor          : '#336980',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : amountBilledRs
-        }
-
-      ]
-    }
-
-    var barChartOptions     = {
-
-
-           scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-
-    }
-    barChartOptions.datasetFill = false
-    var legend=barChart2.Bar(areaChartData, barChartOptions)
-     document.getElementById("js-legend2").innerHTML = legend.generateLegend();
-
-/*3nd chart*/
-
-
-
-
-
-
-
-
-  // Get context with jQuery - using jQuery's .get() method.
-    var areaChartCanvas3 = $('#barChart3').get(0).getContext('2d')
-    // This will get the first returned node in the jQuery collection.
-    var barChart3       = new Chart(areaChartCanvas3)
-
-var test=[754932482,
--1511473,
-19616657,
-6087619,
-150942141,
-563775556,
-302725,
-283200,
-87028724,
-358440712,
-13625572,
-3876397,
-93203990,
-82694756
-]
-
-    var areaChartData = {
-      labels  : ["CGS",
-"UI CHARGES",
-"NTPCL-VVNL coal",
-"NTPCL-VVNL solar",
-"KPCL-HYDEL",
-"KPCL-THERMAL",
-"KPCL-WIND",
-"KPCL-Solar",
- "Solar",
-"UPCL",
-"Co-Generation",
-"Bio-Mass",
-"Mini-Hydel",
-"Wind"
-],
-
-      datasets: [
-        {
-          label               : 'P.P Cost Rs/unit',
-          fillColor           : '#ff4d4d',
-          strokeColor         : '#ff4d4d',
-          pointColor          : '#ff4d4d',
-          pointStrokeColor    : '#c1c7d1',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : test
-        }
-
-      ]
-    }
-
-    var barChartOptions     = {
-
-
-           scaleBeginAtZero        : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : true,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - If there is a stroke on each bar
-      barShowStroke           : true,
-      //Number - Pixel width of the bar stroke
-      barStrokeWidth          : 2,
-      //Number - Spacing between each of the X value sets
-      barValueSpacing         : 5,
-      //Number - Spacing between data sets within X values
-      barDatasetSpacing       : 1,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to make the chart responsive
-      responsive              : true,
-      maintainAspectRatio     : true
-
-    }
-    barChartOptions.datasetFill = false
-    var legend=barChart3.Bar(areaChartData, barChartOptions)
-     document.getElementById("js-legend3").innerHTML = legend.generateLegend();
-
+ }
+ $('#chartType').on('click', updateChart)
+ updateChart();
 
 
 
@@ -659,66 +694,5 @@ display: inline;
   height: 100%;
   border-radius: 5px;
 }
-/*legend 2*/
-  #js-legend2 ul {
-  list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
 
-#js-legend2 ul li {
-  display: inline;
-  padding-left: 30px;
-  position: relative;
-  margin-bottom: 4px;
-  border-radius: 5px;
-  padding: 2px 8px 2px 28px;
-  font-size: 14px;
-  cursor: default;
-  -webkit-transition: background-color 200ms ease-in-out;
-  -moz-transition: background-color 200ms ease-in-out;
-  -o-transition: background-color 200ms ease-in-out;
-  transition: background-color 200ms ease-in-out;
-}
-
-#js-legend2 li span {
-display: inline;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 20px;
-  height: 100%;
-  border-radius: 5px;
-}
-/*legend 3*/
-  #js-legend3 ul {
-  list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-#js-legend3 ul li {
-  display: inline;
-  padding-left: 30px;
-  position: relative;
-  margin-bottom: 4px;
-  border-radius: 5px;
-  padding: 2px 8px 2px 28px;
-  font-size: 14px;
-  cursor: default;
-  -webkit-transition: background-color 200ms ease-in-out;
-  -moz-transition: background-color 200ms ease-in-out;
-  -o-transition: background-color 200ms ease-in-out;
-  transition: background-color 200ms ease-in-out;
-}
-
-#js-legend3 li span {
-display: inline;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 20px;
-  height: 100%;
-  border-radius: 5px;
-}
 </style>
